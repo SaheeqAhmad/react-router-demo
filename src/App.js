@@ -1,25 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
+import Home from './Home';
+import About from './About';
+import Product from './Product';
+import {Routes, Route, Link} from 'react-router-dom';
+
+function NotFound(){
+  return <div>Path Not Found</div>
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div>
+      <h1>Welcome</h1>
+      <div>
+        <Link to="/">Home</Link> {' '}
+        <Link to="about">About</Link> {' '}
+        <Link to="products">Product</Link> 
+      </div>
+      <Routes>
+        <Route path = "/" element = {<Home/>}></Route>
+        <Route path = "about" element = {<About/>}></Route>
+        <Route path = "products" element = {<Product/>}></Route>
+        <Route path = "*" element = {<NotFound/>} ></Route>
+      </Routes>
+      </div>
   );
 }
 
